@@ -1,5 +1,10 @@
 require 'sinatra'
+require 'pry-byebug' unless production?
 
 get '/' do
-  'Hesllo world!'
+  'Hello world!'
+end
+
+get '/webhooks' do
+  'webhooks...'
 end
