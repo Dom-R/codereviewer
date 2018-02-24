@@ -5,6 +5,4 @@ get '/' do
   'Hello world!'
 end
 
-get '/webhooks' do
-  'webhooks...'
-end
+post '/webhooks' do; end
