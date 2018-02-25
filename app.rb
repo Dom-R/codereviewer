@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'pry-byebug' unless production?
-require 'identificator'
+require_relative 'lib/identificator'
 
 get '/' do
   'Hello world!'
