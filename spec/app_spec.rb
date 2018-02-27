@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "App" do
+RSpec.describe 'App' do
   describe 'received post at' do
-    describe '/webhooks' do
+    describe '/' do
       it 'responds ok' do
-        post '/webhooks'
+        post '/'
 
         expect(last_response).to be_ok
       end
@@ -12,7 +12,7 @@ describe "App" do
       it 'calls Identificator.identify' do
         expect(Identificator).to receive(:identify)
 
-        post '/webhooks'
+        post '/'
       end
     end
   end
