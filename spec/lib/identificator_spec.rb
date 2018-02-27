@@ -1,13 +1,15 @@
 require 'spec_helper'
 
-describe Identificator do
+RSpec.describe Identificator do
   describe '#identify' do
-    let(:request) { spy }
-
     subject { described_class.identify(request) }
 
-    it 'returns a UnknownRequest' do
-      expect(subject).to eq described_class::UnknownRequest
+    context 'a unknown request' do
+      let(:request) { Sinatra::Request.new(nil) }
+
+      it 'returns an object that responds to process' do
+        expect(subject).to respond_to(:process)
+      end
     end
   end
 end

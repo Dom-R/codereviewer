@@ -1,7 +1,7 @@
-class Identificator
-  class UnknownRequest; end
+require_relative 'identificator/unknown_request'
 
-  def self.identify(request)
-    UnknownRequest
+class Identificator
+  def self.identify(_request)
+    UnknownRequest.new
   end
 end
