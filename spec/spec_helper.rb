@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rack/test'
 require File.expand_path '../../app.rb', __FILE__
 
@@ -6,7 +8,9 @@ ENV['RACK_ENV'] = 'test'
 module RSpecMixin
   include Rack::Test::Methods
 
-  def app; Sinatra::Application; end
+  def app
+    Sinatra::Application
+  end
 end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
