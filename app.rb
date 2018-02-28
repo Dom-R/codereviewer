@@ -5,5 +5,6 @@ require 'pry-byebug' unless production?
 require_relative 'lib/identificator'
 
 post '/' do
-  Identificator.identify(request)
+  event = Identificator.identify(request)
+  event.process
 end
