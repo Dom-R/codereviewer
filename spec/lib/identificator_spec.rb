@@ -17,5 +17,21 @@ RSpec.describe Identificator do
         expect(subject).to be_a(Identificator::UnknownRequest)
       end
     end
+
+    context 'a pull request request' do
+      let(:request) do
+        Sinatra::Request.new(
+          'HTTP_X_GITHUB_EVENT' => 'pull_request'
+        )
+      end
+
+      it 'returns an object that responds to process' do
+        expect(subject).to respond_to(:process)
+      end
+
+      it 'returns an object of kind PullRequest' do
+        expect(subject).to be_a(Identificator::PullRequestRequest)
+      end
+    end
   end
 end
