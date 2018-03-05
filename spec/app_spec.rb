@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe 'App' do
   describe 'received post at' do
     describe '/' do
-      it 'responds ok' do
+      it 'does not responds ok' do
         post '/'
 
         expect(last_response).not_to be_ok
