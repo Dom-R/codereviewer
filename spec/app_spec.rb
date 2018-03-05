@@ -8,7 +8,7 @@ RSpec.describe 'App' do
       it 'responds ok' do
         post '/'
 
-        expect(last_response).to be_ok
+        expect(last_response).not_to be_ok
       end
 
       it 'calls Identificator.identify' do

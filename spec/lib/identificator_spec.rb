@@ -7,10 +7,14 @@ RSpec.describe Identificator do
     subject { described_class.identify(request) }
 
     context 'a unknown request' do
-      let(:request) { Sinatra::Request.new(nil) }
+      let(:request) { Sinatra::Request.new({}) }
 
       it 'returns an object that responds to process' do
         expect(subject).to respond_to(:process)
+      end
+
+      it 'returns an object of kind UnknownRequest' do
+        expect(subject).to be_a(Identificator::UnknownRequest)
       end
     end
   end
