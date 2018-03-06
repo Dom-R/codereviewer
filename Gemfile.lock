@@ -15,7 +15,7 @@ GEM
     rack (2.0.4)
     rack-protection (2.0.1)
       rack
-    rack-test (0.8.2)
+    rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
