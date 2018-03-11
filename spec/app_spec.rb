@@ -19,7 +19,22 @@ RSpec.describe 'App' do
       end
 
       context 'pull request request' do
-        let(:enviroments) { { 'HTTP_X_GITHUB_EVENT' => 'pull_request' } }
+        let(:body) do
+          StringIO.new(
+            {
+              "pull_request": {
+                "comments_url": 'https://api.github.com/repos/Test/test/issues/1/comments'
+              }
+            }.to_json
+          )
+        end
+
+        let(:enviroments) do
+          {
+            'HTTP_X_GITHUB_EVENT' => 'pull_request',
+            'rack.input' => body
+          }
+        end
 
         it 'responds ok' do
           subject

@@ -19,9 +19,17 @@ RSpec.describe Identificator do
     end
 
     context 'a pull request request' do
+      let(:body) do
+        StringIO.new(
+          {
+          }.to_json
+        )
+      end
+
       let(:request) do
         Sinatra::Request.new(
-          'HTTP_X_GITHUB_EVENT' => 'pull_request'
+          'HTTP_X_GITHUB_EVENT' => 'pull_request',
+          'rack.input' => body
         )
       end
 
