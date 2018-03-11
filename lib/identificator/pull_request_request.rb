@@ -9,7 +9,15 @@ class Identificator
     end
 
     def process
+      comment
       200
+    end
+
+    private
+
+    def comment
+      url = (request_body['pull_request']['comments_url']).to_s
+      body = { body: 'This is a default comment' }
     end
   end
 end
