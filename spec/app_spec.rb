@@ -1,34 +1,20 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe "App" do
-  describe 'received get at' do
-    describe '/' do
-      it 'responds ok' do
-        get '/'
-
-        expect(last_response).to be_ok
-      end
-
-      it 'says hello world' do
-        get '/'
-
-        expect(last_response.body).to eq 'Hello world!'
-      end
-    end
-  end
-
+RSpec.describe 'App' do
   describe 'received post at' do
-    describe '/webhooks' do
-      it 'responds ok' do
-        post '/webhooks'
+    describe '/' do
+      it 'does not responds ok' do
+        post '/'
 
-        expect(last_response).to be_ok
+        expect(last_response).not_to be_ok
       end
 
       it 'calls Identificator.identify' do
         expect(Identificator).to receive(:identify)
 
-        post '/webhooks'
+        post '/'
       end
     end
   end

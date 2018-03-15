@@ -1,7 +1,9 @@
-class Identificator
-  class UnknownRequest; end
+# frozen_string_literal: true
 
-  def self.identify(request)
-    UnknownRequest
+require_relative 'identificator/unknown_request'
+
+class Identificator
+  def self.identify(_request)
+    UnknownRequest.new
   end
 end
