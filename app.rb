@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require 'dotenv/load'
 require 'pry-byebug' unless production?
 require_relative 'lib/identificator'
 

@@ -7,7 +7,7 @@ require 'json'
 module Github
   class Client
     def post(url, body)
-      authorization = Base64.strict_encode64("#{ENV['GITHUB_USERNAME']}:#{ENV['TOKEN']}")
+      authorization = Base64.strict_encode64("#{ENV['GITHUB_USERNAME']}:#{ENV['GITHUB_TOKEN']}")
       header = { 'Authorization' => "Basic #{authorization}",
                  'Content-Type' => 'application/json' }
 
