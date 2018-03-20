@@ -2,7 +2,7 @@
 
 require 'sinatra'
 require 'dotenv/load'
-require 'pry-byebug' unless production?
+require 'pry-byebug' unless settings.production?
 require_relative 'lib/identificator'
 
 post '/' do
