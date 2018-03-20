@@ -13,7 +13,7 @@ RSpec.describe 'App' do
       end
 
       it 'calls Identificator.identify' do
-        expect(Identificator).to receive(:identify)
+        expect(Identificator).to receive(:identify).and_call_original
 
         post '/'
       end

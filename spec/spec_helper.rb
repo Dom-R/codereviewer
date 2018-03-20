@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
+ENV['RACK_ENV'] = 'test'
+
 require 'rack/test'
 require File.expand_path '../../app.rb', __FILE__
-
-ENV['RACK_ENV'] = 'test'
 
 module RSpecMixin
   include Rack::Test::Methods

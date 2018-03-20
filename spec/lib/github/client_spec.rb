@@ -12,7 +12,7 @@ describe Github::Client do
     end
     let!(:header) do
       {
-        'Authorization' => 'Basic Og==',
+        'Authorization' => 'Basic VGVzdDp0ZXN0dG9rZW4=',
         'Content-Type' => 'application/json'
       }
     end
