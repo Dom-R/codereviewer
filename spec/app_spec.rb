@@ -19,11 +19,12 @@ RSpec.describe 'App' do
       end
 
       context 'pull request request' do
+        let(:url) { 'https://api.github.com/repos/Test/test/issues/1/comments' }
         let(:body) do
           StringIO.new(
             {
               "pull_request": {
-                "comments_url": 'https://api.github.com/repos/Test/test/issues/1/comments'
+                "comments_url": url
               }
             }.to_json
           )
@@ -34,6 +35,10 @@ RSpec.describe 'App' do
             'HTTP_X_GITHUB_EVENT' => 'pull_request',
             'rack.input' => body
           }
+        end
+
+        before do
+          stub_request(:post, url).to_return(status: 200)
         end
 
         it 'responds ok' do

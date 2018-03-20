@@ -3,6 +3,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'rack/test'
+require 'webmock/rspec'
 require File.expand_path '../../app.rb', __FILE__
 
 module RSpecMixin
