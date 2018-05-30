@@ -4,6 +4,7 @@ require "sinatra"
 require "dotenv"
 require "pry-byebug" unless settings.production?
 require_relative "lib/identificator"
+require_relative "lib/settings"
 
 Dotenv.load(
   ".env.#{ENV["RACK_ENV"]}",
