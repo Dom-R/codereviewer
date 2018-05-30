@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../github/client'
+require_relative "../github/client"
 
 class Identificator
   class PullRequestHandle
@@ -19,8 +19,8 @@ class Identificator
     private
 
     def comment
-      url = (request_body['pull_request']['comments_url']).to_s
-      body = { body: 'This is a default comment' }
+      url = (request_body["pull_request"]["comments_url"]).to_s
+      body = { body: "This is a default comment" }
       github_client.post(url, body)
     end
   end
