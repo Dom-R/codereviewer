@@ -3,7 +3,7 @@
 require_relative '../github/client'
 
 class Identificator
-  class PullRequestRequest
+  class PullRequestHandle
     attr_reader :request_body, :github_client
 
     def initialize(request_body)

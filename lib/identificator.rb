@@ -3,7 +3,7 @@
 require 'json'
 
 require_relative 'identificator/unknown_request'
-require_relative 'identificator/pull_request_request'
+require_relative 'identificator/pull_request_handle'
 
 class Identificator
   def self.identify(request)
@@ -11,6 +11,6 @@ class Identificator
 
     body = JSON.parse(request.body.read)
 
-    PullRequestRequest.new(body)
+    PullRequestHandle.new(body)
   end
 end

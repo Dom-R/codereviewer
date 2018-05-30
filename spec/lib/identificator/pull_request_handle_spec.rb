@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Identificator::PullRequestRequest do
+RSpec.describe Identificator::PullRequestHandle do
   let(:request) do
     {
       'pull_request' => {

@@ -41,7 +41,7 @@ RSpec.describe Identificator do
       end
 
       it 'returns an object of kind PullRequest' do
-        expect(subject).to be_a(Identificator::PullRequestRequest)
+        expect(subject).to be_a(Identificator::PullRequestHandle)
       end
     end
   end
