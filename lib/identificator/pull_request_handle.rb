@@ -20,8 +20,17 @@ class Identificator
 
     def comment
       url = (request_body["pull_request"]["comments_url"]).to_s
-      body = { body: "This is a default comment" }
       github_client.post(url, body)
+    end
+
+    def body
+      {
+        body: "Reviewer: @#{reviewer}"
+      }
+    end
+
+    def reviewer
+      Settings.collaborators.sample
     end
   end
 end

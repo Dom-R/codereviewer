@@ -1,0 +1,11 @@
+defaults: &defaults
+  collaborators: [Waldo, Wenda, Odlaw, Wilma]
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  collaborators: []

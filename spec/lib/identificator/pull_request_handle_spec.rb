@@ -18,7 +18,7 @@ RSpec.describe Identificator::PullRequestHandle do
     let!(:url) { "https://api.github.com/repos/Test/test/issues/1/comments" }
     let!(:body) do
       {
-        body: "This is a default comment"
+        body: "Reviewer: @Wenda"
       }
     end
 
