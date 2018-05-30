@@ -12,13 +12,13 @@ class Identificator
     end
 
     def process
-      comment
+      choose_and_comment_reviewer if request_body["action"] == "opened"
       200
     end
 
     private
 
-    def comment
+    def choose_and_comment_reviewer
       github_client.post(url, body)
     end
 
