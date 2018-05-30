@@ -3,55 +3,59 @@
 require "spec_helper"
 
 RSpec.describe Identificator::PullRequestHandle do
-  let(:url) { "https://api.github.com/repos/Test/test/issues/1/comments" }
   let(:github_client) { instance_double("Github::Client") }
+  let(:comments_url) { "https://api.github.com/repos/Test/test/issues/1/comments" }
+  let(:comment_body) do
+    {
+      body: "Reviewer: @Wenda"
+    }
+  end
+  let(:assign_url) { "https://api.github.com/repos/Test/test/pulls/1/requested_reviewers" }
+  let(:assign_body) do
+    {
+      reviewers: ["Wenda"]
+    }
+  end
+  let(:request) do
+    {
+      "pull_request" => {
+        "url" => "https://api.github.com/repos/Test/test/pulls/1",
+        "comments_url" => comments_url
+      }
+    }
+  end
 
   subject { described_class.new(request) }
 
   describe "#process" do
     context "with a pull request being opened" do
-      let(:request) do
-        {
-          "action" => "opened",
-          "pull_request" => {
-            "comments_url" => url
-          }
-        }
-      end
-      let(:body) do
-        {
-          body: "Reviewer: @Wenda"
-        }
-      end
+      let(:opened_request) { request.merge("action" => "opened") }
+
+      subject { described_class.new(opened_request) }
 
       before do
         allow(Github::Client).to receive(:new).and_return(github_client)
       end
 
-      it "post a comment" do
-        expect(github_client).to receive(:post).with(url, body)
+      it "comment and assign a reviewer" do
+        expect(github_client).to receive(:post).with(comments_url, comment_body)
+        expect(github_client).to receive(:post).with(assign_url, assign_body)
 
         subject.process
       end
 
       it "returns 200" do
-        allow(github_client).to receive(:post).with(url, body)
+        allow(github_client).to receive(:post).with(comments_url, comment_body)
+        allow(github_client).to receive(:post).with(assign_url, assign_body)
 
         expect(subject.process).to eq 200
       end
     end
 
     context "with any other type of pull request" do
-      let(:request) do
-        {
-          "pull_request" => {
-            "comments_url" => url
-          }
-        }
-      end
-
-      it "does not post a comment" do
-        expect(github_client).to_not receive(:post)
+      it "does not comment and assign a reviewer" do
+        expect(github_client).to_not receive(:post).with(comments_url, comment_body)
+        expect(github_client).to_not receive(:post).with(assign_url, assign_body)
 
         subject.process
       end

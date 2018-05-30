@@ -12,7 +12,10 @@ class Identificator
     end
 
     def process
-      comment if request_body["action"] == "opened"
+      if request_body["action"] == "opened"
+        assign
+        comment
+      end
 
       200
     end
@@ -20,16 +23,30 @@ class Identificator
     private
 
     def comment
-      github_client.post(comment_url, comment_body)
+      github_client.post(comments_url, comment_body)
     end
 
-    def comment_url
+    def comments_url
       request_body["pull_request"]["comments_url"]
     end
 
     def comment_body
       {
         body: "Reviewer: @#{reviewer}"
+      }
+    end
+
+    def assign
+      github_client.post(assign_url, assign_body)
+    end
+
+    def assign_url
+      "#{request_body["pull_request"]["url"]}/requested_reviewers"
+    end
+
+    def assign_body
+      {
+        reviewers: [reviewer]
       }
     end
 
