@@ -3,8 +3,8 @@
 source "https://rubygems.org"
 
 gem "dotenv"
-gem "sinatra"
 gem "settingslogic"
+gem "sinatra"
 
 group :development, :test do
   gem "pry-byebug"

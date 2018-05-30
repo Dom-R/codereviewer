@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Settings do
   describe ".collaborators" do
     it "returns a list of collaborators" do
-      expect(described_class.collaborators).to eq ["Waldo", "Wenda", "Odlaw", "Wilma"]
+      expect(described_class.collaborators).to eq %w[Waldo Wenda Odlaw Wilma]
     end
   end
 end

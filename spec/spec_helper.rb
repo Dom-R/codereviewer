@@ -4,7 +4,7 @@ ENV["RACK_ENV"] = "test"
 
 require "rack/test"
 require "webmock/rspec"
-require File.expand_path "../../app.rb", __FILE__
+require File.expand_path "../app.rb", __dir__
 
 module RSpecMixin
   include Rack::Test::Methods
@@ -30,4 +30,4 @@ RSpec.configure do |config|
 end
 
 # Specifying seed to control randomness in the tests
-srand 51885
+srand 51_885
