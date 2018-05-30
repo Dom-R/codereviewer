@@ -18,7 +18,7 @@ RSpec.describe Identificator do
       end
     end
 
-    context "a pull request request" do
+    context "a pull request" do
       let(:body) do
         StringIO.new(
           {
