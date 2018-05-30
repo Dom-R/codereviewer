@@ -12,28 +12,29 @@ class Identificator
     end
 
     def process
-      choose_and_comment_reviewer if request_body["action"] == "opened"
+      comment if request_body["action"] == "opened"
+
       200
     end
 
     private
 
-    def choose_and_comment_reviewer
-      github_client.post(url, body)
+    def comment
+      github_client.post(comment_url, comment_body)
     end
 
-    def url
+    def comment_url
       request_body["pull_request"]["comments_url"]
     end
 
-    def body
+    def comment_body
       {
         body: "Reviewer: @#{reviewer}"
       }
     end
 
     def reviewer
-      Settings.collaborators.sample
+      @reviewer ||= Settings.collaborators.sample
     end
   end
 end
