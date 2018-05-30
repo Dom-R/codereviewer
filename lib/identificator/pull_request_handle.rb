@@ -19,8 +19,11 @@ class Identificator
     private
 
     def comment
-      url = (request_body["pull_request"]["comments_url"]).to_s
       github_client.post(url, body)
+    end
+
+    def url
+      request_body["pull_request"]["comments_url"]
     end
 
     def body
