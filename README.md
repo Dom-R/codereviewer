@@ -6,7 +6,7 @@ CodeReviewer is a code review bot made in Ruby, whose purpose is to manage pull 
 
 ## Upcoming Features
 
-- [ ] Monitor new pull requests
-- [ ] Assign a reviewer
+- [x] Monitor new pull requests
+- [x] Assign a reviewer
 - [ ] Assign reviewer/s from a group of a organization
 - [ ] More to come...
