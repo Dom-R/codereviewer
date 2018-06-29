@@ -2,7 +2,7 @@ FROM ruby:2.5.1-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY . /app
 
 RUN bundle install --without development test
 
